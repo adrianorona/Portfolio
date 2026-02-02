@@ -41,6 +41,12 @@ const About = () => {
               creating impactful visualizations and dashboards that tell compelling stories 
               through data.
             </p>
+
+            <div className="experience-card">
+              <div className="exp-icon">📊</div>
+              <h4>Data-Driven</h4>
+              <p>Passionate about turning raw data into actionable insights</p>
+            </div>
           </div>
 
           <div className="about-skills">
@@ -54,12 +60,6 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="experience-card">
-              <div className="exp-icon">📊</div>
-              <h4>Data-Driven</h4>
-              <p>Passionate about turning raw data into actionable insights</p>
             </div>
           </div>
         </div>
