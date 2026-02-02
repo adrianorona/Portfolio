@@ -1,0 +1,43 @@
+.globe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, #1a0f08 0%, #0a0604 40%, #000000 100%);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.globe-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+  pointer-events: auto;
+}
+
+.globe-container canvas:active {
+  cursor: grabbing;
+}
+
+.globe-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(100, 255, 218, 0.15);
+  border: 1px solid rgba(100, 255, 218, 0.4);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #64ffda;
+  font-size: 0.85rem;
+  font-family: 'Fira Code', monospace;
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
