@@ -7,6 +7,7 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
   const handleChange = (e) => {
     setFormData({
@@ -15,12 +16,41 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('loading');
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'f32f8173-0f57-4e8d-85f7-a8fee75f90bc',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          from_name: 'Portfolio Contact Form',
+          subject: `New message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const socialLinks = [
@@ -149,9 +179,24 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="submit-btn">
-              Send Message
+            <button 
+              type="submit" 
+              className={`submit-btn ${status === 'loading' ? 'loading' : ''}`}
+              disabled={status === 'loading'}
+            >
+              {status === 'loading' ? 'Sending...' : 'Send Message'}
             </button>
+            
+            {status === 'success' && (
+              <p className="form-status success">
+                ✓ Message sent successfully! I'll get back to you soon.
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="form-status error">
+                ✕ Failed to send message. Please try again or email me directly.
+              </p>
+            )}
           </form>
         </div>
 
