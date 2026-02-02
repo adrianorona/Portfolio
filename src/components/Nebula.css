@@ -1,0 +1,177 @@
+.nebula-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Nebula layers with animated gradients */
+.nebula-layer {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.4;
+}
+
+.nebula-1 {
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(100, 255, 218, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(138, 43, 226, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 40% 80%, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
+  animation: nebulaFloat1 25s ease-in-out infinite;
+}
+
+.nebula-2 {
+  background: 
+    radial-gradient(ellipse at 70% 60%, rgba(255, 20, 147, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 70%, rgba(64, 224, 208, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(138, 43, 226, 0.08) 0%, transparent 40%);
+  animation: nebulaFloat2 30s ease-in-out infinite;
+}
+
+.nebula-3 {
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 90%, rgba(0, 150, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 40%, rgba(255, 100, 150, 0.06) 0%, transparent 50%);
+  animation: nebulaFloat3 35s ease-in-out infinite;
+}
+
+/* Floating animations for nebula layers */
+@keyframes nebulaFloat1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(5%, 3%) rotate(2deg) scale(1.02);
+  }
+  50% {
+    transform: translate(-3%, 5%) rotate(-1deg) scale(0.98);
+  }
+  75% {
+    transform: translate(-5%, -3%) rotate(1deg) scale(1.01);
+  }
+}
+
+@keyframes nebulaFloat2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(-4%, 4%) rotate(-2deg) scale(1.03);
+  }
+  66% {
+    transform: translate(4%, -2%) rotate(2deg) scale(0.97);
+  }
+}
+
+@keyframes nebulaFloat3 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(3%, -4%) rotate(1deg);
+  }
+  40% {
+    transform: translate(-2%, 3%) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-4%, -2%) rotate(2deg);
+  }
+  80% {
+    transform: translate(2%, 4%) rotate(-2deg);
+  }
+}
+
+/* Twinkling stars layer */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 50%, rgba(100, 255, 218, 0.9) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 30%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 60%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 15% 80%, rgba(138, 43, 226, 0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 45%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 75%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 65% 85%, rgba(100, 255, 218, 0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 10%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 5% 55%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 35% 35%, rgba(0, 191, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 25%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 70%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 40%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 20% 95%, rgba(255, 100, 150, 0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 5%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 95%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 55%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 8% 35%, rgba(100, 255, 218, 0.6) 0%, transparent 100%);
+  animation: twinkle 8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.6;
+  }
+}
+
+/* Add subtle color shift animation */
+.nebula-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(100, 255, 218, 0.02) 25%,
+    transparent 50%,
+    rgba(138, 43, 226, 0.02) 75%,
+    transparent 100%
+  );
+  animation: colorShift 20s ease-in-out infinite;
+}
+
+@keyframes colorShift {
+  0%, 100% {
+    opacity: 0.5;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotate(180deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nebula-layer {
+    opacity: 0.3;
+  }
+  
+  .stars {
+    opacity: 0.6;
+  }
+}
