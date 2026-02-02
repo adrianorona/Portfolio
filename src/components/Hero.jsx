@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './Hero.css';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  const [countersStarted, setCountersStarted] = useState(false);
-  const statsRef = useRef(null);
   const fullText = 'I turn data into insights';
 
   // Typing effect
@@ -33,49 +31,11 @@ const Hero = () => {
     return () => clearInterval(cursorInterval);
   }, []);
 
-  // Counter animation on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !countersStarted) {
-          setCountersStarted(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (statsRef.current) observer.observe(statsRef.current);
-    return () => observer.disconnect();
-  }, [countersStarted]);
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  // Count up animation component
-  const CountUp = ({ end, suffix = '' }) => {
-    const [count, setCount] = useState(0);
-    
-    useEffect(() => {
-      if (!countersStarted) return;
-      let start = 0;
-      const duration = 2000;
-      const increment = end / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-      return () => clearInterval(timer);
-    }, [countersStarted, end]);
-    
-    return <>{count}{suffix}</>;
   };
 
   // Render typed text with highlights
@@ -118,17 +78,17 @@ const Hero = () => {
             <span>Get In Touch</span>
           </button>
         </div>
-        <div className="hero-stats" ref={statsRef}>
+        <div className="hero-stats">
           <div className="stat">
-            <span className="stat-number"><CountUp end={6} suffix="+" /></span>
+            <span className="stat-number">6+</span>
             <span className="stat-label">Projects</span>
           </div>
           <div className="stat">
-            <span className="stat-number"><CountUp end={53} suffix="+" /></span>
+            <span className="stat-number">53+</span>
             <span className="stat-label">Contributions</span>
           </div>
           <div className="stat">
-            <span className="stat-number"><CountUp end={4} /></span>
+            <span className="stat-number">4</span>
             <span className="stat-label">Followers</span>
           </div>
         </div>
