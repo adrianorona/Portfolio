@@ -198,13 +198,75 @@
   .hero {
     padding: 0 5%;
     padding-top: 100px;
+    background: linear-gradient(180deg, rgba(10, 10, 20, 0.9) 0%, rgba(10, 10, 20, 0.7) 100%);
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-greeting {
+    font-size: 0.9rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
   }
 
   .hero-stats {
-    gap: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
   }
 
   .hero-buttons {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 4% 40px;
+  }
+
+  .hero-greeting {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-stats {
+    gap: 1rem;
+  }
+
+  .stat {
+    min-width: 80px;
   }
 }

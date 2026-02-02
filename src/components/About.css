@@ -169,19 +169,73 @@
 @media (max-width: 968px) {
   .about-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .tools-list {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .skills-card {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 600px) {
   .about {
-    padding: 80px 5%;
+    padding: 60px 5%;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title::after {
+    max-width: 100px;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
   }
 
   .tools-list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem 0.8rem;
+  }
+
+  .tools-list li {
+    font-size: 0.8rem;
+  }
+
+  .skills-card {
+    padding: 1.25rem;
+  }
+
+  .skills-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+  }
+
+  .experience-card {
+    padding: 1rem;
+  }
+
+  .exp-icon {
+    font-size: 2rem;
+  }
+
+  .experience-card h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .tools-list {
+    grid-template-columns: 1fr 1fr;
   }
 }

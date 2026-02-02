@@ -106,10 +106,50 @@
 
 @media (max-width: 768px) {
   .projects {
-    padding: 80px 5%;
+    padding: 60px 5%;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-icon {
+    font-size: 2rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 50px 4%;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+  }
+
+  .project-header {
+    margin-bottom: 1rem;
+  }
+
+  .project-tech {
+    gap: 0.4rem;
+  }
+
+  .tech-tag {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
   }
 }

@@ -324,3 +324,97 @@ a.cert-card {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+  .cert-modal {
+    width: 95%;
+    padding: 1rem;
+    max-height: 90vh;
+  }
+
+  .cert-modal-title {
+    font-size: 1.1rem;
+    padding-right: 35px;
+  }
+
+  .cert-modal-issuer {
+    font-size: 0.8rem;
+  }
+
+  .cert-modal-description {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .cert-modal-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .cert-pdf-container {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements {
+    padding: 50px 4%;
+  }
+
+  .cert-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .cert-icon {
+    font-size: 1.5rem;
+  }
+
+  .cert-title {
+    font-size: 0.9rem;
+  }
+
+  .cert-issuer {
+    font-size: 0.8rem;
+  }
+
+  .award-card {
+    padding: 1rem;
+  }
+
+  .award-icon {
+    font-size: 2rem;
+  }
+
+  .award-title {
+    font-size: 0.85rem;
+  }
+
+  .award-description {
+    font-size: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .cert-modal {
+    padding: 0.75rem;
+  }
+
+  .cert-modal-title {
+    font-size: 1rem;
+  }
+
+  .cert-pdf-container {
+    height: 45vh;
+  }
+}
