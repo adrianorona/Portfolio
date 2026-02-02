@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import './Achievements.css';
 
 const Achievements = () => {
   const [showCert, setShowCert] = useState(false);
   const [selectedCert, setSelectedCert] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const certifications = [
     {
@@ -56,7 +75,7 @@ const Achievements = () => {
   };
 
   return (
-    <section id="achievements" className="achievements">
+    <section id="achievements" className={`achievements ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
       <div className="achievements-container">
         <h2 className="section-title">
           <span className="title-number">03.</span> Achievements
@@ -70,7 +89,7 @@ const Achievements = () => {
                 <div 
                   key={cert.id} 
                   className="cert-card"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{ animationDelay: `${index * 0.15}s` }}
                   onClick={() => openCertificate(cert)}
                 >
                   <span className="cert-icon">{cert.icon}</span>

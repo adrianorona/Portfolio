@@ -5,14 +5,26 @@
   right: 0;
   z-index: 1000;
   padding: 1.2rem 2rem;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: navbarSlideDown 0.6s ease;
+}
+
+@keyframes navbarSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .navbar.scrolled {
   background: rgba(10, 10, 15, 0.95);
   backdrop-filter: blur(10px);
   padding: 0.8rem 2rem;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 30px rgba(100, 255, 218, 0.1);
 }
 
 .navbar-container {
@@ -30,11 +42,21 @@
   display: flex;
   align-items: center;
   gap: 2px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
 }
 
 .logo-bracket {
   color: #64ffda;
   font-family: 'Fira Code', monospace;
+  transition: text-shadow 0.3s ease;
+}
+
+.navbar-logo:hover .logo-bracket {
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
 }
 
 .logo-text {
@@ -58,7 +80,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   font-family: 'Inter', sans-serif;
   padding: 0.5rem 0;
   position: relative;
@@ -71,12 +93,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #64ffda;
+  background: linear-gradient(90deg, #64ffda, #00ffaa);
   transition: width 0.3s ease;
 }
 
 .navbar-links li button:hover {
-  color: #ffffff;
+  color: #64ffda;
 }
 
 .navbar-links li button:hover::after {
@@ -90,10 +112,33 @@
   padding: 0.6rem 1.5rem !important;
   border-radius: 4px;
   transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.navbar-cta:hover::before {
+  left: 100%;
 }
 
 .navbar-cta:hover {
-  background: rgba(100, 255, 218, 0.1) !important;
+  background: rgba(100, 255, 218, 0.15) !important;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+  transform: translateY(-2px);
+}
+
+.navbar-cta::after {
+  display: none;
 }
 
 .navbar-cta::after {

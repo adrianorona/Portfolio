@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const tools = [
     { name: 'Python', icon: '🐍' },
     { name: 'Pandas', icon: '🐼' },
@@ -18,7 +34,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="about">
+    <section id="about" className={`about ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
       <div className="about-container">
         <h2 className="section-title">
           <span className="title-number">01.</span> About Me
@@ -54,7 +70,11 @@ const About = () => {
               <h3>Technologies I Work With</h3>
               <div className="tech-grid">
                 {tools.map((tool, index) => (
-                  <div key={index} className="tech-item">
+                  <div 
+                    key={index} 
+                    className="tech-item"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
                     <span className="tech-icon">{tool.icon}</span>
                     <span className="tech-name">{tool.name}</span>
                   </div>

@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Projects.css';
 
 const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -60,7 +80,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="projects">
+    <section id="projects" className={`projects ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
       <div className="projects-container">
         <h2 className="section-title">
           <span className="title-number">02.</span> Projects
@@ -71,7 +91,7 @@ const Projects = () => {
             <div 
               key={project.id} 
               className="project-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
               <div className="project-header">
                 <span className="project-icon">{project.image}</span>

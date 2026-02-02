@@ -6,6 +6,18 @@
   z-index: 10;
 }
 
+/* Scroll reveal animation */
+.about .about-container {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.about.visible .about-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -26,6 +38,13 @@
   height: 1px;
   background: linear-gradient(90deg, #64ffda 0%, transparent 100%);
   max-width: 300px;
+  animation: lineGrow 1s ease forwards;
+  transform-origin: left;
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .title-number {
@@ -92,6 +111,12 @@
   border-radius: 12px;
   padding: 2rem;
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.skills-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
 }
 
 .skills-card h3 {
@@ -116,16 +141,40 @@
   border: 1px solid rgba(100, 255, 218, 0.1);
   border-radius: 8px;
   transition: all 0.3s ease;
+  opacity: 0;
+  animation: techFadeIn 0.5s ease forwards;
+}
+
+.about.visible .tech-item {
+  opacity: 1;
+}
+
+@keyframes techFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
 }
 
 .tech-item:hover {
-  background: rgba(100, 255, 218, 0.1);
-  border-color: rgba(100, 255, 218, 0.3);
-  transform: translateY(-2px);
+  background: rgba(100, 255, 218, 0.15);
+  border-color: rgba(100, 255, 218, 0.4);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .tech-icon {
   font-size: 1.25rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 .tech-name {

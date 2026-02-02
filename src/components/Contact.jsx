@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Contact.css';
 
 const Contact = () => {
@@ -8,6 +8,25 @@ const Contact = () => {
     message: '',
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -97,7 +116,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className={`contact ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
       <div className="contact-container">
         <h2 className="section-title">
           <span className="title-number">04.</span> Get In Touch
