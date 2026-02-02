@@ -156,7 +156,6 @@ const Contact = () => {
         </div>
 
         <footer className="footer">
-          <p>Designed & Built with ❤️</p>
           <p className="copyright">© 2026 Lee Adrian Noroña. All Rights Reserved.</p>
         </footer>
       </div>
